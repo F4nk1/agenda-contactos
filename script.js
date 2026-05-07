@@ -1,5 +1,10 @@
 let contactos = [];
 
+window.onload = function(){
+
+    cargarContactos();
+}
+
 function agregarContacto(){
 
     let nombre = document.getElementById("nombre").value;
@@ -23,6 +28,7 @@ function agregarContacto(){
     };
 
     contactos.push(contacto);
+    guardarContactos();
 
     mostrarContactos();
 
@@ -64,6 +70,7 @@ function mostrarContactos(){
 function eliminarContacto(index){
 
     contactos.splice(index, 1);
+    guardarContactos();
 
     mostrarContactos();
 
@@ -106,4 +113,25 @@ function buscarContacto(){
 
         `;
     });
+}
+
+function guardarContactos(){
+
+    localStorage.setItem(
+        "contactos",
+        JSON.stringify(contactos)
+    );
+}
+
+function cargarContactos(){
+
+    let datos =
+        localStorage.getItem("contactos");
+
+    if(datos){
+
+        contactos = JSON.parse(datos);
+
+        mostrarContactos();
+    }
 }

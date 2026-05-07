@@ -26,3 +26,10 @@ button{
     border: none;
     cursor: pointer;
 }
+
+.contacto{
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+}

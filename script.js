@@ -39,7 +39,7 @@ function mostrarContactos(){
 
     lista.innerHTML = "";
 
-    contactos.forEach(contacto => {
+    contactos.forEach((contacto, index) => {
 
         lista.innerHTML += `
 
@@ -51,8 +51,25 @@ function mostrarContactos(){
 
                 <p>${contacto.correo}</p>
 
+                <button onclick="eliminarContacto(${index})">
+                    Eliminar
+                </button>
+
             </div>
 
         `;
     });
+}
+
+function eliminarContacto(index){
+
+    contactos.splice(index, 1);
+
+    mostrarContactos();
+
+    let mensaje =
+        document.getElementById("mensaje");
+
+    mensaje.innerText = "Contacto eliminado.";
+    mensaje.style.color = "orange";
 }

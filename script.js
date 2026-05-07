@@ -73,3 +73,37 @@ function eliminarContacto(index){
     mensaje.innerText = "Contacto eliminado.";
     mensaje.style.color = "orange";
 }
+
+function buscarContacto(){
+
+    let texto =
+        document.getElementById("buscar")
+        .value
+        .toLowerCase();
+
+    let filtrados = contactos.filter(contacto =>
+        contacto.nombre.toLowerCase().includes(texto)
+    );
+
+    let lista =
+        document.getElementById("listaContactos");
+
+    lista.innerHTML = "";
+
+    filtrados.forEach((contacto, index) => {
+
+        lista.innerHTML += `
+
+            <div class="contacto">
+
+                <h3>${contacto.nombre}</h3>
+
+                <p>${contacto.telefono}</p>
+
+                <p>${contacto.correo}</p>
+
+            </div>
+
+        `;
+    });
+}
